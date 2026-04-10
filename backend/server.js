@@ -17,7 +17,7 @@ app.use(express.json());
 
 // Database connection
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL || 'postgresql://postgres:password@localhost:5432/notes_db',
+  connectionString: process.env.DATABASE_URL || 'postgresql://postgres:password@postgres-headless:5432/notes_db',
 });
 
 // Initialize database table
