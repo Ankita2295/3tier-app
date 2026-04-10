@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-backend-app
+  labels:
+    app: node-backend-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: node-backend-app
+  template:
+    metadata:
+      labels:
+        app: node-backend-app
+    spec:
+      containers:
+        - name: node-backend-container
+          image: ankya2207/notes-backend:latest
+          ports:
+            - containerPort: 5000
+          env:
+            - name: NODE_ENV
+              value: "production"
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "300m"
+              memory: "256Mi"
+
