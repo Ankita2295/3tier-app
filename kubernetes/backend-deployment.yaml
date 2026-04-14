@@ -5,7 +5,7 @@ metadata:
   labels:
     app: node-backend-app
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: node-backend-app
@@ -16,12 +16,15 @@ spec:
     spec:
       containers:
         - name: node-backend-container
-          image: ankya2207/notes-backend:latest
+          image: ankya2207/node-backend-app:v2
+          imagePullPolicy: Never
           ports:
-            - containerPort: 5000
+            - containerPort: 3001
           env:
             - name: NODE_ENV
               value: "production"
+            - name: DATABASE_URL
+              value: "postgresql://myuser:mypassword@postgres-headless:5432/notes_db"
           resources:
             requests:
               cpu: "100m"
@@ -29,4 +32,3 @@ spec:
             limits:
               cpu: "300m"
               memory: "256Mi"
-

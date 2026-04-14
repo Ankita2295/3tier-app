@@ -5,7 +5,7 @@ metadata:
   labels:
     app: react-nginx-app
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: react-nginx-app
@@ -16,7 +16,8 @@ spec:
     spec:
       containers:
         - name: react-nginx-container
-          image: ankya2207/notes-frontend:latest
+          image: ankya2207/react-nginx-app:v2
+          imagePullPolicy: Never
           ports:
             - containerPort: 80
           resources:
