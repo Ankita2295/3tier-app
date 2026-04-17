@@ -14,10 +14,12 @@ spec:
       labels:
         app: node-backend-app
     spec:
+      imagePullSecrets:
+        - name: ecr-secret
       containers:
         - name: node-backend-container
-          image: ankya2207/node-backend-app:v2
-          imagePullPolicy: Never
+          image: 825385241885.dkr.ecr.eu-north-1.amazonaws.com/node-backend-app:v2
+          imagePullPolicy: Always
           ports:
             - containerPort: 3001
           env:

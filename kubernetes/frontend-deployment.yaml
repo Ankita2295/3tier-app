@@ -14,10 +14,12 @@ spec:
       labels:
         app: react-nginx-app
     spec:
+      imagePullSecrets:
+        - name: ecr-secret
       containers:
         - name: react-nginx-container
-          image: ankya2207/react-nginx-app:v2
-          imagePullPolicy: Never
+          image: 825385241885.dkr.ecr.eu-north-1.amazonaws.com/react-nginx-app:v2
+          imagePullPolicy: Always
           ports:
             - containerPort: 80
           resources:
