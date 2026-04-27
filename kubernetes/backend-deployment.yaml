@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-backend-app
+  labels:
+    app: node-backend-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: node-backend-app
+  template:
+    metadata:
+      labels:
+        app: node-backend-app
+    spec:
+      imagePullSecrets:
+        - name: ecr-secret
+      containers:
+        - name: node-backend-container
+          image: 825385241885.dkr.ecr.eu-north-1.amazonaws.com/node-backend-app:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3001
+          env:
+            - name: NODE_ENV
+              value: "production"
+            - name: DATABASE_URL
+              value: "postgresql://myuser:mypassword@postgres-headless:5432/notes_db"
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "300m"
+              memory: "256Mi"

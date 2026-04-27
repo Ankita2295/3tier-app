@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-nginx-app
+  labels:
+    app: react-nginx-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: react-nginx-app
+  template:
+    metadata:
+      labels:
+        app: react-nginx-app
+    spec:
+      imagePullSecrets:
+        - name: ecr-secret
+      containers:
+        - name: react-nginx-container
+          image: 825385241885.dkr.ecr.eu-north-1.amazonaws.com/react-nginx-app:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "300m"
+              memory: "256Mi"
