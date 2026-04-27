@@ -97,3 +97,56 @@ Thumbs.db
 
 # Docker
 .dockerignore
+# ----------------------------
+# Terraform files
+# ----------------------------
+
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+
+# Terraform directory
+.terraform/
+.terraform.lock.hcl
+
+# Terraform variable files (often contain secrets)
+*.tfvars
+*.tfvars.json
+
+# Override files (local dev only)
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# CLI config files
+.terraformrc
+terraform.rc
+
+# ----------------------------
+# Sensitive / environment files
+# ----------------------------
+
+.env
+.env.*
+credentials*
+secrets*
+*.pem
+*.key
+
+# ----------------------------
+# OS / IDE files
+# ----------------------------
+
+.DS_Store
+.vscode/
+.idea/
+
+# ----------------------------
+# Archives / binaries (your case)
+# ----------------------------
+
+*.zip
+*.tar
+*.gz
